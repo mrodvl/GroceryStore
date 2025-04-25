@@ -4,6 +4,8 @@ package com.example.grocerystore.controller;
 import com.example.grocerystore.entity.Product;
 import com.example.grocerystore.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-@AllArgsConstructor
 public class ProductController {
-    private final ProductService productService;
+    private ProductService productService;
 
+    public ProductController(@Autowired @Qualifier("productServiceImpl") ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {

@@ -4,7 +4,7 @@ package com.example.grocerystore.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
+//
 @Entity
 @Data
 public class Product {
